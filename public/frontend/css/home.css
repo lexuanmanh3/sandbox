@@ -172,8 +172,8 @@ button {
 }
 
 /* Icon đổi màu khi hover */
-.service-item:hover .material-symbols-outlined,
-.service-item.active .material-symbols-outlined {
+.service-item:hover .icon,
+.service-item.active .icon {
   color: var(--secondary);
 }
 
@@ -259,8 +259,8 @@ button {
 
 .hero-icon {
   margin-bottom: 16px;
-  font-size: 80px;
-  font-variation-settings: "FILL" 1, "wght" 300, "GRAD" 0, "opsz" 24;
+  width: 80px;
+  height: 80px;
 }
 
 .hero-title h1 {
@@ -355,10 +355,10 @@ button {
   transform: translateY(-1px);
 }
 
-.quick-link .material-symbols-outlined {
+.quick-link .icon {
   color: var(--secondary);
-  font-size: 32px;
-  font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 0, "opsz" 24;
+  width: 32px;
+  height: 32px;
 }
 
 .quick-link span:last-child {
@@ -422,14 +422,14 @@ button {
   background: var(--surface-container-low);
 }
 
-.service-item .material-symbols-outlined {
+.service-item .icon {
   color: var(--primary);
-  font-size: 64px;
+  width: 64px;
+  height: 64px;
   transition: color 0.2s ease;
-  font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 0, "opsz" 24;
 }
 
-.service-item:hover .material-symbols-outlined {
+.service-item:hover .icon {
   color: var(--secondary);
 }
 
@@ -452,7 +452,7 @@ button {
   box-shadow: var(--shadow-active);
 }
 
-.service-item.active .material-symbols-outlined,
+.service-item.active .icon,
 .service-item.active span:last-child {
   color: var(--secondary);
 }
@@ -754,7 +754,8 @@ button {
   }
 
   .hero-icon {
-    font-size: 72px;
+    width: 72px;
+    height: 72px;
   }
 
   .main-content {
@@ -870,3 +871,357 @@ button {
   align-items: center;
   height: 72px;
 }
+/* ==========================================================================
+   User Dropdown Menu (menu tài khoản cấp 2)
+   ========================================================================== */
+
+/* Container relative — dropdown sẽ tính tọa độ từ đây */
+.user-dropdown {
+  position: relative;
+}
+
+/* Nút account đổi màu nền khi menu đang mở */
+.user-dropdown.is-open > #accountBtn {
+  background: var(--surface-container-low);
+  color: var(--secondary);
+}
+
+/* ===== Dropdown panel ===== */
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 10000;
+
+  min-width: 220px;
+  padding: 6px 0;
+
+  background: var(--surface-container-lowest);
+  border: 1px solid var(--outline-variant);
+  border-radius: 12px;
+  box-shadow:
+    0 4px 6px -1px rgba(19, 27, 46, 0.08),
+    0 16px 32px -4px rgba(19, 27, 46, 0.14);
+
+  /* Mặc định ẩn — dùng class .is-open để hiện */
+  opacity: 0;
+  transform: translateY(-8px) scale(0.97);
+  pointer-events: none;
+  visibility: hidden;
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease,
+    visibility 0.18s ease;
+  transform-origin: top right;
+}
+
+/* Trạng thái mở */
+.dropdown-menu.is-open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+  visibility: visible;
+}
+
+/* ===== Header: avatar + tên + username ===== */
+.dropdown-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px 10px;
+}
+
+.dropdown-header__icon {
+  width: 36px;
+  height: 36px;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.dropdown-header strong {
+  display: block;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  color: var(--on-surface);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+}
+
+.dropdown-header span {
+  display: block;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--on-surface-variant);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+}
+
+/* ===== Đường kẻ phân cách ===== */
+.dropdown-divider {
+  border: none;
+  border-top: 1px solid var(--outline-variant);
+  margin: 4px 0;
+  opacity: 0.6;
+}
+
+/* ===== Item menu ===== */
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  width: 100%;
+  padding: 9px 16px;
+
+  background: transparent;
+  border: none;
+  border-radius: 0;
+
+  font: inherit;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  color: var(--on-surface-variant);
+  text-align: left;
+  text-decoration: none;
+  white-space: nowrap;
+
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.dropdown-item .material-symbols-outlined {
+  font-size: 18px;
+  font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 20;
+  flex-shrink: 0;
+  color: var(--outline);
+  transition: color 0.15s ease;
+}
+
+.dropdown-item:hover {
+  background: var(--surface-container-low);
+  color: var(--on-surface);
+}
+
+.dropdown-item:hover .material-symbols-outlined {
+  color: var(--secondary);
+}
+
+/* Đăng xuất — màu đỏ nguy hiểm */
+.dropdown-item--danger {
+  color: var(--error);
+}
+
+.dropdown-item--danger .material-symbols-outlined {
+  color: var(--error);
+  opacity: 0.7;
+}
+
+.dropdown-item--danger:hover {
+  background: rgba(186, 26, 26, 0.06);
+  color: var(--error);
+}
+
+.dropdown-item--danger:hover .material-symbols-outlined {
+  color: var(--error);
+  opacity: 1;
+}
+
+/* ===== Click ngoài overlay (mobile) — không che nội dung, chỉ bắt click ===== */
+.dropdown-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+}
+
+/* .dropdown-backdrop.is-open {
+  display: block;
+} */
+
+/* ==========================================================================
+   Logout Confirmation Modal
+   ========================================================================== */
+
+/* Lớp nền mờ phủ toàn màn hình */
+.logout-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+
+  background: rgba(19, 27, 46, 0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+  /* Hiệu ứng fade in */
+  animation: backdropIn 0.2s ease both;
+}
+
+@keyframes backdropIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Ẩn khi có [hidden] — override display:flex */
+.logout-backdrop[hidden] {
+  display: none !important;
+}
+
+/* Card modal */
+.logout-modal {
+  width: 100%;
+  max-width: 380px;
+  padding: 32px 28px 24px;
+  text-align: center;
+
+  background: var(--surface-container-lowest);
+  border: 1px solid var(--outline-variant);
+  border-radius: 16px;
+  box-shadow:
+    0 4px 6px -1px rgba(19, 27, 46, 0.1),
+    0 24px 48px -8px rgba(19, 27, 46, 0.22);
+
+  animation: modalIn 0.22s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.88) translateY(16px); }
+  to   { opacity: 1; transform: scale(1)    translateY(0);    }
+}
+
+/* Vòng tròn icon đăng xuất */
+.logout-modal__icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(186, 26, 26, 0.1);
+}
+
+.logout-modal__icon .material-symbols-outlined {
+  font-size: 32px;
+  color: var(--error);
+  font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 32;
+}
+
+/* Tiêu đề */
+.logout-modal__title {
+  margin: 0 0 8px;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+  color: var(--on-surface);
+}
+
+/* Mô tả */
+.logout-modal__desc {
+  margin: 0 0 28px;
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--on-surface-variant);
+}
+
+/* Nhóm nút */
+.logout-modal__actions {
+  display: flex;
+  gap: 12px;
+}
+
+/* Base nút */
+.logout-modal__btn {
+  flex: 1;
+  min-height: 42px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s ease, transform 0.12s ease, opacity 0.18s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.logout-modal__btn:active { transform: scale(0.97); }
+
+/* Nút Hủy */
+.logout-modal__btn--cancel {
+  background: var(--surface-container-low);
+  border: 1px solid var(--outline-variant);
+  color: var(--on-surface-variant);
+}
+
+.logout-modal__btn--cancel:hover {
+  background: var(--surface-container);
+  color: var(--on-surface);
+}
+
+/* Nút Xác nhận đăng xuất */
+.logout-modal__btn--confirm {
+  background: var(--error);
+  border: 1px solid transparent;
+  color: var(--on-error);
+}
+
+.logout-modal__btn--confirm:hover { opacity: 0.88; }
+
+.logout-modal__btn--confirm:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.logout-modal__btn--confirm .material-symbols-outlined {
+  font-size: 16px;
+  font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 16;
+}
+
+/* Spin icon loading */
+.animate-spin,
+.logout-modal__btn--confirm .spin {
+  animation: spin 0.75s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ==========================================================================
+   SVG Icon — dùng chung cho x-icon component
+   ========================================================================== */
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+  /* fill="currentColor" trong SVG nên tự kế thừa màu CSS color */
+  flex-shrink: 0;
+}
+
+/* Icon bị thiếu file — hiển thị placeholder */
+.icon--missing {
+  width: 24px;
+  height: 24px;
+  background: var(--outline-variant);
+  border-radius: 4px;
+}
+
+/* ==========================================================================
+   Menu toggle — ẩn/hiện icon menu/close qua aria-expanded
+   ========================================================================== */
+.menu-toggle .icon.close-icon { display: none; }
+.menu-toggle[aria-expanded="true"] .icon.menu-icon { display: none; }
+.menu-toggle[aria-expanded="true"] .icon.close-icon { display: inline-block; }

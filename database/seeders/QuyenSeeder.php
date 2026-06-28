@@ -112,5 +112,23 @@ class QuyenSeeder extends Seeder
                 ]
             );
         }
+
+        // Gán quyền dashboard.view cho vai trò "user" (người dùng thường)
+        // Vai trò user chỉ được xem dashboard, không có quyền quản trị
+        $userRole = DB::table('vai_tro')->where('ma_vai_tro', 'user')->first();
+
+        if ($userRole) {
+            $quyenDashboard = DB::table('quyen')->where('ma_quyen', 'dashboard.view')->first();
+
+            if ($quyenDashboard) {
+                DB::table('vai_tro_quyen')->updateOrInsert(
+                    [
+                        'vai_tro_id' => $userRole->id,
+                        'quyen_id'   => $quyenDashboard->id,
+                    ],
+                    ['tao_luc' => now()]
+                );
+            }
+        }
     }
 }

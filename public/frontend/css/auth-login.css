@@ -1,0 +1,125 @@
+/* ==========================================================================
+   Auth Login — Custom styles (Tailwind extension)
+   ========================================================================== */
+
+/* Hiệu ứng icon Material Symbols */
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Glass card — nền mờ trong suốt kiểu glassmorphism */
+.glass-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Hiệu ứng ánh sáng nền phía sau card */
+.ambient-glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(22, 163, 74, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+/* Icon trong input */
+.input-group .input-icon {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: block;
+    flex-shrink: 0;
+}
+
+.input-group:focus-within .input-icon {
+    color: #006b2c;
+}
+
+.input-group input {
+    min-height: 52px;
+}
+
+.input-group input[type="text"],
+.input-group input[type="password"] {
+    padding-left: 44px;
+}
+
+.input-group button svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+/* Thông báo lỗi validate inline dưới từng field */
+.field-error {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 4px;
+    font-size: 12px;
+    line-height: 16px;
+    color: #dc2626;
+}
+.field-error .material-symbols-outlined {
+    font-size: 14px;
+}
+
+/* Banner lỗi tổng (khi sai tài khoản/mật khẩu) */
+.alert-error {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background: rgba(220, 38, 38, 0.08);
+    border: 1px solid rgba(220, 38, 38, 0.3);
+    border-radius: 8px;
+    font-size: 14px;
+    color: #dc2626;
+    margin-bottom: 16px;
+}
+.alert-error .material-symbols-outlined {
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+/* Banner thành công (sau logout) */
+.alert-success {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background: rgba(22, 163, 74, 0.08);
+    border: 1px solid rgba(22, 163, 74, 0.3);
+    border-radius: 8px;
+    font-size: 14px;
+    color: #16a34a;
+    margin-bottom: 16px;
+}
+.alert-success .material-symbols-outlined {
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+/* Nút submit khi đang loading */
+.btn-loading {
+    opacity: 0.8;
+    cursor: not-allowed;
+}
+
+/* Animate spin cho icon loading */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+.animate-spin {
+    animation: spin 0.8s linear infinite;
+    display: inline-block;
+}

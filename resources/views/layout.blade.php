@@ -6,18 +6,19 @@
   <title>Sandbox</title>
     <link rel="stylesheet" href="{{ asset('frontend/css/root.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/home.css') }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    {{-- Font local: Be Vietnam Pro (không dùng Google CDN) --}}
+    <link rel="stylesheet" href="{{ asset('frontend/css/fonts.css') }}">
 </head>
 <body>
+  <x-icon-sprite />
+
   <header class="site-header">
     <nav class="topbar container">
       <a class="brand" href="#" aria-label="VietFin trang chủ"><img src="{{ asset('frontend/img/TV9TECH_logo_transparent – Đã sửa.png') }}" alt="VietFin"></a>
 
       <button class="menu-toggle" type="button" aria-label="Mở menu" aria-expanded="false">
-        <span class="material-symbols-outlined">menu</span>
+        <x-icon name="menu" class="menu-icon" />
+        <x-icon name="close" class="close-icon" />
       </button>
 
       <div class="nav-menu" id="mainMenu">
@@ -28,19 +29,59 @@
         <a class="nav-link" href="#">TOPUP DATA</a>
       </div>
 
-      <div class="user-area">
-        <div class="user-info">
-          <strong>LÊ VƯƠNG</strong>
-          <span>A6844870</span>
-        </div>
-
         <button class="icon-btn" type="button" aria-label="Thông báo">
-          <span class="material-symbols-outlined">notifications</span>
+          <x-icon name="notifications" />
         </button>
 
-        <button class="icon-btn" type="button" aria-label="Tài khoản">
-          <span class="material-symbols-outlined">account_circle</span>
-        </button>
+        {{-- Nút tài khoản + menu cấp 2 --}}
+        <div class="user-dropdown" id="userDropdown">
+          <button
+            class="icon-btn"
+            type="button"
+            id="accountBtn"
+            aria-label="Tài khoản"
+            aria-expanded="false"
+            aria-controls="accountMenu"
+          >
+            <x-icon name="account_circle" />
+          </button>
+
+          {{-- Menu cấp 2 --}}
+          <div class="dropdown-menu" id="accountMenu" role="menu" aria-hidden="true">
+            {{-- Header: tên + username --}}
+            <div class="dropdown-header">
+              <x-icon name="account_circle" class="dropdown-header__icon" />
+              <div>
+                <strong>{{ auth()->user()->ten_hien_thi }}</strong>
+                <span>{{ auth()->user()->ten_dang_nhap }}</span>
+              </div>
+            </div>
+
+            <hr class="dropdown-divider" />
+
+            <a href="#" class="dropdown-item" role="menuitem">
+              <x-icon name="person" />
+              Thông tin tài khoản
+            </a>
+            <a href="#" class="dropdown-item" role="menuitem">
+              <x-icon name="lock_reset" />
+              Đổi mật khẩu
+            </a>
+
+            <hr class="dropdown-divider" />
+
+            {{-- Nút đăng xuất — trigger JS submit form ẩn bên dưới --}}
+            <button
+              type="button"
+              class="dropdown-item dropdown-item--danger"
+              id="logoutBtn"
+              role="menuitem"
+            >
+              <x-icon name="logout" />
+              Đăng xuất
+            </button>
+          </div>
+        </div>
       </div>
     </nav>
   </header>
@@ -51,7 +92,7 @@
 
     <div class="hero-content container">
       <div class="hero-title">
-        <span class="material-symbols-outlined hero-icon">home</span>
+        <x-icon name="home" class="hero-icon" />
         <h1>WELCOME</h1>
       </div>
 
@@ -85,7 +126,11 @@
     </div>
   </footer>
 
+  {{-- Form đăng xuất ẩn — submit bằng JS --}}
+  <form id="logoutForm" method="POST" action="{{ route('logout') }}" style="display:none">
+    @csrf
+  </form>
+
   <script src="{{ asset('frontend/js/home.js') }}"></script>
-  <script src="./assets/js/main.js"></script>
 </body>
 </html>

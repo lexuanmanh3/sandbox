@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,8 +14,10 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            QuyenSeeder::class,
+            // VaiTroSeeder phải chạy trước QuyenSeeder
+            // vì QuyenSeeder cần tra cứu vai_tro để gán quyền
             VaiTroSeeder::class,
+            QuyenSeeder::class,
             AdminSeeder::class,
             DaiLyApiSeeder::class,
         ]);

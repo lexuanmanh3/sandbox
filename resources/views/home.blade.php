@@ -1,26 +1,26 @@
- 
+
 @extends('layout')
 @section('content')
  <main class="main-content container">
     <section class="dashboard-card">
       <div class="quick-links">
         <a class="quick-link" href="#">
-          <span class="material-symbols-outlined">description</span>
+          <x-icon name="description" />
           <span>Thông tin tài khoản</span>
         </a>
 
         <a class="quick-link" href="#">
-          <span class="material-symbols-outlined">payments</span>
+          <x-icon name="payments" />
           <span>Nạp tiền tài khoản</span>
         </a>
 
         <a class="quick-link" href="#">
-          <span class="material-symbols-outlined">sync_alt</span>
+          <x-icon name="sync_alt" />
           <span>Chuyển tiền đại lý</span>
         </a>
 
         <a class="quick-link" href="#">
-          <span class="material-symbols-outlined">history</span>
+          <x-icon name="history" />
           <span>Lịch sử giao dịch</span>
         </a>
       </div>
@@ -32,37 +32,37 @@
       <div class="services-wrap">
         <div class="service-grid">
           <button class="service-item" type="button">
-            <span class="material-symbols-outlined">mobile_friendly</span>
+            <x-icon name="mobile_friendly" />
             <span>NẠP TIỀN ĐIỆN THOẠI</span>
           </button>
 
           <button class="service-item" type="button">
-            <span class="material-symbols-outlined">phone_iphone</span>
+            <x-icon name="phone_iphone" />
             <span>NẠP TIỀN TRẢ SAU</span>
           </button>
 
           <button class="service-item" type="button">
-            <span class="material-symbols-outlined">cell_wifi</span>
+            <x-icon name="cell_wifi" />
             <span>NẠP TOPUP DATA</span>
           </button>
 
           <button class="service-item" type="button">
-            <span class="material-symbols-outlined">credit_card</span>
+            <x-icon name="credit_card" />
             <span>MUA THẺ ĐIỆN THOẠI</span>
           </button>
 
           <button class="service-item " type="button">
-            <span class="material-symbols-outlined">sports_esports</span>
+            <x-icon name="sports_esports" />
             <span>MUA THẺ GAME</span>
           </button>
 
           <button class="service-item" type="button">
-            <span class="material-symbols-outlined">sim_card</span>
+            <x-icon name="sim_card" />
             <span>MUA THẺ DATA</span>
           </button>
 
           <button class="service-item" type="button">
-            <span class="material-symbols-outlined">account_balance_wallet</span>
+            <x-icon name="account_balance_wallet" />
             <span>THANH TOÁN HÓA ĐƠN</span>
           </button>
 

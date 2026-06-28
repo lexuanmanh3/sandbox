@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -49,6 +48,14 @@ class VaiTroSeeder extends Seeder
             [
                 'ma_vai_tro' => 'agent_api',
                 'ten_vai_tro' => 'Đại lý API',
+                'mac_dinh' => false,
+                'trang_thai' => 'hoat_dong',
+            ],
+
+            // Vai trò dành cho người dùng đăng ký thông thường
+            [
+                'ma_vai_tro' => 'user',
+                'ten_vai_tro' => 'Người dùng',
                 'mac_dinh' => false,
                 'trang_thai' => 'hoat_dong',
             ],
